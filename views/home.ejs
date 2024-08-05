@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('./partials/style') %>
+    <title>Home</title>
+  </head>
+  <body>
+    <%- include('./partials/navbar', {user: user}) %>
+
+    <div
+      class="container mt-3 row grid col-4 d-flex justify-content-center"
+      style="height: 100vh; width: 100vh; gap: 4rem"
+    >
+      <% blogs.forEach(blog => { %>
+      <div
+        class="card d-flex justify-content-center"
+        style="width: 300px; height: 400px"
+      >
+        <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="img" />
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+
+          <a href="/blog/<%= blog._id %>" class="btn btn-primary">visit</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <%- include('./partials/script') %>
+  </body>
+</html>
